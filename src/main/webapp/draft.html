@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="bootstrap1/boot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+            color: #ddd;
+            display: block;
+            text-decoration:none;
+        }
+        .sidebar a:hover {
+            color: #fff;
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        a{
+        text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#dashboard" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#user-management" onclick="showSection('user-management')"><i class="fas fa-users"></i> User Management</a>
+        <a href="#order-management" onclick="showSection('order-management')"><i class="fas fa-box"></i> Order Management</a>
+        <a href="#analytics" onclick="showSection('analytics')"><i class="fas fa-chart-line"></i> Analytics</a>
+        <a href="#notifications" onclick="showSection('notifications')"><i class="fas fa-bell"></i> Notifications</a>
+        <a href="#feedback-reviews" onclick="showSection('feedback-reviews')"><i class="fas fa-comment-alt"></i> Feedback & Reviews</a>
+        <a href="#customers-support" onclick="showSection('customers-support')"><i class="fas fa-headset"></i> Customers & Support</a>
+        <a href="#payments" onclick="showSection('payments')"><i class="fas fa-credit-card"></i> About Payments</a>
+        <a href="#settings" onclick="showSection('settings')"><i class="fas fa-cog"></i> Settings</a>
+        <a href="#logout" onclick="showSection('logout')"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+
+    <div class="content">
+        <div id="dashboard">
+            <h2>Admin Dashboard</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="card-title">Total Users</div>
+                            <h3>120</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <div class="card-title">Total Orders</div>
+                            <h3>250</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <div class="card-title">Pending Deliveries</div>
+                            <h3>15</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <div class="card-title">Cancelled Orders</div>
+                            <h3>5</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="user-management" style="display:none;">
+            <h3>User Management</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>GEN. Fred</td>
+                            <td>125 Main St</td>
+                            <td>+250 787879364</td>
+                            <td>
+                                <button class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="order-management" style="display:none;">
+            <h3>Order Management</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User ID</th>
+                            <th>Order Date</th>
+                            <th>Delivery Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2024-06-30</td>
+                            <td>2024-07-01</td>
+                            <td>Pending</td>
+                            <td>
+                                <button class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Update</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Cancel</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="analytics" style="display:none;">
+            <h3>Analytics</h3>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">User Growth</h4>
+                            <canvas id="userGrowthChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Order Statistics</h4>
+                            <canvas id="orderStatsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notifications" style="display:none;">
+            <h3>Notifications</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Order</td>
+                            <td>Your order has been shipped.</td>
+                            <td>2024-07-01</td>
+                            <td>
+                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i> View</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="feedback-reviews" style="display:none;">
+            <h3>Feedback & Reviews</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Feedback</th>
+                            <th>Rating</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>JaneDoe</td>
+                            <td>Great service!</td>
+                            <td>5</td>
+                            <td>2024-06-29</td>
+                            <td>
+                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i> View</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="customers-support" style="display:none;">
+            <h3>Customers & Support</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Issue</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>JohnSmith</td>
+                            <td>Delivery delay</td>
+                            <td>2024-06-28</td>
+                            <td>Open</td>
+                            <td>
+                                <button class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Update</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Close</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="payments" style="display:none;">
+            <h3>About Payments</h3>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Payment Methods</h4>
+                    <p>We accept various payment methods including credit cards, debit cards, and online payment gateways.</p>
+                    <h4>Payment Policies</h4>
+                    <p>All payments must be completed at the time of order. We do not accept cash on delivery.</p>
+                    <h4>Refund Policy</h4>
+                    <p>Refunds are processed within 7-10 business days after the cancellation of an order.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="settings" style="display:none;">
+            <h3>Settings</h3>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Change Credentials</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter new username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter new password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Credentials</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4>Update Profile Photo</h4>
+                    <form enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="profilePhoto">Profile Photo</label>
+                            <input type="file" class="form-control-file" id="profilePhoto">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Photo</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4>Add Admin</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="newAdminUsername">New Admin Username</label>
+                            <input type="text" class="form-control" id="newAdminUsername" placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label for="newAdminPassword">New Admin Password</label>
+                            <input type="password" class="form-control" id="newAdminPassword" placeholder="Enter password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Admin</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="logout" style="display:none;">
+            <h3>Logout</h3>
+            <div class="card">
+                <div class="card-body">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content > div');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+   
+    </script>
+</body>
+</html>
